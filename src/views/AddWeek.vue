@@ -61,7 +61,9 @@ export default {
   computed: {
     ...mapGetters(["weeks"]),
     num() {
+      if(this.$route.params && this.$route.params['num'])
       return this.$route.params.num;
+      else return 1
     },
   },
   methods: {
@@ -79,30 +81,37 @@ export default {
         }
       }
     },
-    watch: {
-      'weeks': {
-        handler: (val) => {
-          if (val && val.length > 0) {
-            this.week = this.weeks.find((f) => f.number == this.num) || {};
-          }
-        },
-        immediate: true,
-        deep: true,
-      },
+  },
+  watch: {
+      // 'weeks': {
+      //   handler: (val) => {
+      //     if (val && val.length > 0) {
+      //       this.week = this.weeks.find((f) => f.number == this.num) || {};
+      //     }else{
+      //       this.week = 1
+      //     }
+      //   },
+      //   immediate: true,
+      //   deep: true,
+      // },
       'num': {
         deep: true,
         immediate: true,
         handler: function (val) {
+          if (val && val.length > 0) {
           this.week = this.weeks.find((f) => f.number == val) || {};
+          }else{
+            this.week = 0
+          }
         },
       },
     },
-    created() {
+  created() {
       this.LOAD();
       if (this.weeks && this.weeks.length > 0) {
-        this.weeks = this.weeks.find((f) => f.number == this.num) || {};
+        this.week = this.weeks.find((f) => f.number == this.num) || {};
       }
     },
-  },
-};
+  
+}
 </script>

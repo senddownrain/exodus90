@@ -78,7 +78,9 @@ export default {
   computed: {
     ...mapGetters(["days"]),
     num() {
-      return this.$route.params.num;
+      if(this.$route.params && this.$route.params.num)
+      return this.$route.params.num
+      else return 1;
     },
   },
   methods: {
@@ -95,17 +97,20 @@ export default {
           });
         }
       }
-    },
+    },},
     watch: {
-      days: {
-        handler: (val) => {
-          if (val && val.length > 0) {
-            this.day = this.days.find((f) => f.number == this.num) || {};
-          }
-        },
-        immediate: true,
-        deep: true,
-      },
+      // days: {
+      //   handler: (val) => {
+      //     if (val && val.length > 0) {
+      //       this.day = this.days.find((f) => f.number == this.num) || {};
+      //     }else
+      //     {
+      //       this.day = 1
+      //     }
+      //   },
+      //   immediate: true,
+      //   deep: true,
+      // },
       num: {
         deep: true,
         immediate: true,
@@ -120,6 +125,6 @@ export default {
         this.day = this.days.find((f) => f.number == this.num) || {};
       }
     },
-  },
+  
 };
 </script>

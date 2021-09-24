@@ -1,6 +1,16 @@
 <template>
   <v-card >
-    <v-card-title> День {{ today.number }}. {{ today.title }} </v-card-title>
+    <v-card-title> День {{ today.number }}. {{ today.title }}
+      
+      <!-- <v-select
+        :items="days"
+        item-text="number"
+        v-model="today"
+        label="День"
+        v-on:input="changeDay(`${today}`)"
+      ></v-select> -->
+
+       </v-card-title>
     <v-card-subtitle> {{ date }} / [{{ curWeek }} Неделя] </v-card-subtitle>
     <v-card-text>
       <v-expansion-panels popout multiple v-model="panel">
@@ -43,7 +53,7 @@
 import { mapGetters, mapActions } from "vuex";
 import moment from "moment";
 export default {
-  name: "HelloWorld",
+  name: "MainPage",
   data() {
     return {
       panel: null,
@@ -95,6 +105,10 @@ export default {
     update() {
       this.LOAD();
     },
+    changeDay(day){
+      console.log(day)
+      this.currentDay = day
+    }
   },
   created() {
     this.PRELOAD();

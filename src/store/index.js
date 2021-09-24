@@ -46,6 +46,7 @@ export default new Vuex.Store({
             days.push({ ...s.data() })
 
           })
+          days.sort((a,b) => parseInt(a.number) - parseInt(b.number))
           console.log('days', days)
           //weeks
           Vue.$db.collection('weeks')
@@ -55,6 +56,7 @@ export default new Vuex.Store({
                 weeks.push({ ...s.data() })
 
               })
+              weeks.sort((a,b) => parseInt(a.number) - parseInt(b.number))
               console.log('weeks', weeks)
               //settings
               Vue.$db.collection('settings')

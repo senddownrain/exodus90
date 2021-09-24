@@ -5,41 +5,25 @@
       color="primary"
       dark
     >
-    Exodus 90 for Me
-      <!-- <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
+    <v-toolbar-title>Exodus</v-toolbar-title>
+    
+     
       <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn> -->
+      
+      <!-- сегодня -->
+       <v-btn text ><router-link to="/">  <v-icon color="white">mdi-checkbox-marked-circle</v-icon> </router-link></v-btn>
+       <!-- список -->
+       <v-btn text><router-link to="/list">  <v-icon color="white">mdi-format-list-checkbox</v-icon> </router-link></v-btn>
+      <!-- добавить день -->
+      <v-btn text><router-link to="/add"> <v-icon color="white">mdi-plus-circle</v-icon> </router-link></v-btn>
+       <!-- добавить неделю -->
+       <v-btn text><router-link to="/addweek"><v-icon color="white">mdi-beaker-plus-outline</v-icon></router-link></v-btn>
+       
     </v-app-bar>
 
      <v-main>
       <router-view></router-view>
+      
     </v-main>
   </v-app>
 </template>
@@ -50,7 +34,7 @@ export default {
   name: 'App',
 
   data: () => ({
-    //
+    drawer: false
   }),
 };
 </script>

@@ -13,12 +13,13 @@ const routes = [
     component: Home
   },
   {
-    path: '/add/:num',
+    path: '/add',
     name: 'Add',
     component: Add
   },
   {
-    path: '/addweek/:num',
+    path: '/addweek',
+    //path: '/addweek/:num',
     name: 'AddWeek',
     component: AddWeek
   },
